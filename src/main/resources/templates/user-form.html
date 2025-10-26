@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration form</title>
+</head>
+<body>
+<h2 style="text-align: center">User registration</h2>
+
+<div style="width: 30%; margin: auto; text-align: center; padding-top: 20px; border: 1px solid #ccc; padding: 20px;">
+
+    <form th:action="@{/saveUser}" th:object="${user}" method="post">
+
+        <input type="hidden" th:name="|id|" th:value="${user.id}"/>
+
+        Name:<br>
+        <input type="text" th:field="*{name}" placeholder="Your name"><br><br>
+
+        Surname:<br>
+        <input type="text" th:field="*{surname}" placeholder="Your surname"><br><br>
+
+        Age:<br>
+        <input type="number" th:field="*{age}" min="18" max="100" placeholder="Your age"><br><br>
+
+        E-mail:<br>
+        <input type="email" th:field="*{email}" placeholder="Your E-mail"><br><br>
+
+        Phone number:<br>
+        <input type="tel" th:field="*{phoneNumber}" placeholder="Your phone number"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+
+</body>
+</html>
