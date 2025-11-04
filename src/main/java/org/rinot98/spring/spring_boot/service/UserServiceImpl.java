@@ -1,44 +1,46 @@
 package org.rinot98.spring.spring_boot.service;
 
-import org.rinot98.spring.spring_boot.dao.UserDAO;
+import org.rinot98.spring.spring_boot.dao.UserDao;
 import org.rinot98.spring.spring_boot.entity.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserDAO userDAO;
+    private final UserDao userDao;
 
-    public UserServiceImpl(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
-    @Transactional
     public List<User> getAllUsers() {
-        return userDAO.getAllUsers();
+        return userDao.getAllUsers();
     }
 
     @Override
     @Transactional
     public void saveUser(User user) {
-        userDAO.saveUser(user);
+        userDao.saveUser(user);
     }
 
     @Override
-    @Transactional
     public User getUserById(int id) {
-        return userDAO.getUserById(id);
+        return userDao.getUserById(id);
     }
 
     @Override
     @Transactional
     public void deleteUser(int id) {
-        userDAO.deleteUser(id);
+        userDao.deleteUser(id);
     }
 
+    @Override
+    @Transactional
+    public void updateUser(User updatedUser) {
+        userDao.updateUser(updatedUser);
+    }
 }

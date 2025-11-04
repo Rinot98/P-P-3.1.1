@@ -25,12 +25,13 @@
             <td th:text="${user.email}">Email</td>
             <td th:text="${user.phoneNumber}">phone Number</td>
             <td>
-                <a th:href="@{/updateInfo(userId=${user.id})}">
+                <a th:href="@{/updateInfo/{id}(id=${user.id})}">
                     <button type="button">Update</button>
                 </a>
-                <a th:href="@{/deleteUser(userId=${user.id})}">
-                    <button type="button">Delete</button>
-                </a>
+                <form th:action="@{/deleteUser/{id}(id=${user.id})}" method="POST">
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    <button type="submit">Delete</button>
+                </form>
             </td>
 
         </tr>
